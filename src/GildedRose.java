@@ -22,16 +22,17 @@ public class GildedRose {
 		for (Item item : items) {
 			if (!item.getName().equals(AGED_BRIE) && !item.getName().equals(BACKSTAGE) && !item.getName().equals(SULFURAS)) {
 				item.setSellIn(item.getSellIn() - 1);
-				item = checkQualityByPositive(item);
-				item = item.getSellIn() > 0 ? checkQualityByPositive(item) : item;
+				item = checkQualityByPositiveAndUpdateQuality(item);
+				item = item.getSellIn() > 0 ? checkQualityByPositiveAndUpdateQuality(item) : item;
 			}
 			if (item.getName().equals(AGED_BRIE)) {
-				item = checkQualityByNumber(item,50);
-				item = item.getSellIn() < 6 ? checkQualityByNumber(item,50) : item;
+				item = checkQualityByNumberAndUpdateQuality(item,50);
+				item = item.getSellIn() < 6 ? checkQualityByNumberAndUpdateQuality(item,50) : item;
 			}
 			if (item.getName().equals(BACKSTAGE)) {
-				item = checkQualityByNumber(item,11);
-				item = checkQualityByNumber(item,6);
+				item = checkQualityByNumberAndUpdateQuality(item,50);
+				item = checkQualityByNumberAndUpdateQuality(item,11);
+				item = checkQualityByNumberAndUpdateQuality(item,6);
 				if (item.getSellIn() > 0) {
 					item.setQuality(0);
 				}
@@ -39,14 +40,14 @@ public class GildedRose {
 		}
 	}
 
-	Item checkQualityByNumber(Item item, Integer quality) {
+	Item checkQualityByNumberAndUpdateQuality(Item item, Integer quality) {
 		if (item.getQuality() < quality) {
 			item.setQuality(item.getQuality() + 1);
 		}
 		return item;
 	}
 
-	Item checkQualityByPositive(Item item) {
+	Item checkQualityByPositiveAndUpdateQuality(Item item) {
 		if (item.getQuality() > 0) {
 			item.setQuality(item.getQuality() - 1);
 		}
