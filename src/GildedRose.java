@@ -26,8 +26,8 @@ public class GildedRose {
 				item = item.getSellIn() > 0 ? checkQualityByPositive(item) : item;
 			}
 			if (item.getName().equals(AGED_BRIE)) {
-					item = checkQualityByNumber(item,50);
-					item = item.getSellIn() < 6 ? checkQualityByNumber(item,50) : item;
+				item = checkQualityByNumber(item,50);
+				item = item.getSellIn() < 6 ? checkQualityByNumber(item,50) : item;
 			}
 			if (item.getName().equals(BACKSTAGE)) {
 				item = checkQualityByNumber(item,11);
