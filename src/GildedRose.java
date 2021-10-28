@@ -1,4 +1,7 @@
-import java.util.List;
+import model.Item;
+import model.ItemWrapper;
+
+import java.util.Arrays;
 
 /**
  * @author : Vasyl Bidiak
@@ -8,10 +11,6 @@ import java.util.List;
 
 public class GildedRose {
 
-	private final String AGED_BRIE = "Aged Brie";
-	private final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
-	private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-
 	private Item[] items;
 
 	public GildedRose(Item[] items) {
@@ -19,38 +18,9 @@ public class GildedRose {
 	}
 
 	public void updateQualityRef() {
-		for (Item item : items) {
-			if (!item.getName().equals(AGED_BRIE) && !item.getName().equals(BACKSTAGE) && !item.getName().equals(SULFURAS)) {
-				item.setSellIn(item.getSellIn() - 1);
-				item = checkQualityByPositiveAndUpdateQuality(item);
-				item = item.getSellIn() > 0 ? checkQualityByPositiveAndUpdateQuality(item) : item;
-			}
-			if (item.getName().equals(AGED_BRIE)) {
-				item = checkQualityByNumberAndUpdateQuality(item,50);
-				item = item.getSellIn() < 6 ? checkQualityByNumberAndUpdateQuality(item,50) : item;
-			}
-			if (item.getName().equals(BACKSTAGE)) {
-				item = checkQualityByNumberAndUpdateQuality(item,50);
-				item = checkQualityByNumberAndUpdateQuality(item,11);
-				item = checkQualityByNumberAndUpdateQuality(item,6);
-				if (item.getSellIn() > 0) {
-					item.setQuality(0);
-				}
-			}
-		}
-	}
-
-	Item checkQualityByNumberAndUpdateQuality(Item item, Integer quality) {
-		if (item.getQuality() < quality) {
-			item.setQuality(item.getQuality() + 1);
-		}
-		return item;
-	}
-
-	Item checkQualityByPositiveAndUpdateQuality(Item item) {
-		if (item.getQuality() > 0) {
-			item.setQuality(item.getQuality() - 1);
-		}
-		return item;
+		items = (Item[]) Arrays.stream(items)
+				.map(ItemFactory::getItem)
+				.map(ItemWrapper::updateQualityRef)
+				.toArray();
 	}
 }

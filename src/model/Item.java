@@ -1,7 +1,9 @@
+package model;
+
 /**
  * @author : Vasyl Bidiak
  * @created : 25.10.2021
- * @className : Item
+ * @className : model.Item
  **/
 
 public class Item {
@@ -41,6 +43,6 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item{" + "name='" + name + '\'' + ", sellIn=" + sellIn + ", quality=" + quality + '}';
+		return "model.Item{" + "name='" + name + '\'' + ", sellIn=" + sellIn + ", quality=" + quality + '}';
 	}
 }
