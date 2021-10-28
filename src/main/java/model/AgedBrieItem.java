@@ -11,10 +11,8 @@ public class AgedBrieItem extends ItemWrapper {
 
 	@Override
 	public ItemWrapper updateQualityRef() {
-		this.setQuality(ItemService.updateQualityAfterCheckByNumber(ItemNumbersConstants.MAX_QUALITY.getQuality(), this));
-		if (this.getSellIn() < 6) {
-			this.setQuality(ItemService.updateQualityAfterCheckByNumber(ItemNumbersConstants.MAX_QUALITY.getQuality(), this));
-		}
+		this.setSellIn(this.getSellIn() - 1);
+		this.setQuality(ItemService.updateQuality(this));
 		return this;
 	}
 

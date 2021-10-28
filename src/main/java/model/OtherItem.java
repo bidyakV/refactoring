@@ -14,7 +14,7 @@ public class OtherItem extends ItemWrapper {
 		if (!ItemNameConstants.SULFURAS.getName().equals(this.getName())) {
 			this.setSellIn(this.getSellIn() - 1);
 			this.setQuality(ItemService.updateQualityAfterCheckByPositive(this));
-			if (this.getSellIn() > 0) {
+			if (this.getSellIn() < 0) {
 				this.setQuality(ItemService.updateQualityAfterCheckByPositive(this));
 			}
 		}

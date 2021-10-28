@@ -1,7 +1,8 @@
 import model.Item;
 import model.ItemWrapper;
-
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : Vasyl Bidiak
@@ -18,9 +19,16 @@ public class GildedRose {
 	}
 
 	public void updateQualityRef() {
-		items = (Item[]) Arrays.stream(items)
+
+		List<Item> itemList = Arrays.stream(items)
 				.map(ItemFactory::getItem)
 				.map(ItemWrapper::updateQualityRef)
-				.toArray();
+				.collect(Collectors.toList());
+		items = new Item[itemList.size()];
+		items = itemList.toArray(items);
+	}
+
+	public Item[] getItems() {
+		return items;
 	}
 }
