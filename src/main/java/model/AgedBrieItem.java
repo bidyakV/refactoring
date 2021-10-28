@@ -1,18 +1,17 @@
 package model;
 
-import constants.ItemNumbersConstants;
 import services.ItemService;
 
 public class AgedBrieItem extends ItemWrapper {
 
 	public AgedBrieItem(Item item) {
-		super(item.getName(), item.getSellIn(), item.getQuality());
+		super(item);
 	}
 
 	@Override
 	public ItemWrapper updateQualityRef() {
-		this.setSellIn(this.getSellIn() - 1);
-		this.setQuality(ItemService.updateQuality(this));
+		item.setSellIn(item.getSellIn() - 1);
+		item.setQuality(ItemService.updateQuality(item));
 		return this;
 	}
 

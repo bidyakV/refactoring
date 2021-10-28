@@ -6,16 +6,16 @@ import services.ItemService;
 public class OtherItem extends ItemWrapper {
 
 	public OtherItem(Item item) {
-		super(item.getName(), item.getSellIn(), item.getQuality());
+		super(item);
 	}
 
 	@Override
 	public ItemWrapper updateQualityRef() {
-		if (!ItemNameConstants.SULFURAS.getName().equals(this.getName())) {
-			this.setSellIn(this.getSellIn() - 1);
-			this.setQuality(ItemService.updateQualityAfterCheckByPositive(this));
-			if (this.getSellIn() < 0) {
-				this.setQuality(ItemService.updateQualityAfterCheckByPositive(this));
+		if (!ItemNameConstants.SULFURAS.getName().equals(item.getName())) {
+			item.setSellIn(item.getSellIn() - 1);
+			item.setQuality(ItemService.updateQualityAfterCheckByPositive(item));
+			if (item.getSellIn() < 0) {
+				item.setQuality(ItemService.updateQualityAfterCheckByPositive(item));
 			}
 		}
 		return this;

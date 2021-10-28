@@ -8,7 +8,6 @@ import model.OtherItem;
 public class ItemFactory {
 
 	public static ItemWrapper getItem(Item item) {
-
 		switch (ItemNameConstants.getByName(item.getName())) {
 			case AGED_BRIE:
 				return new AgedBrieItem(item);

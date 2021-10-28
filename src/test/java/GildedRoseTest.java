@@ -31,6 +31,6 @@ public class GildedRoseTest {
 				new Item("Backstage passes to a TAFKAL80ETC concert", 8, 22),
 				new Item("Backstage passes to a TAFKAL80ETC concert", 2, 23)
 		};
-		Arrays.stream(result).forEach(System.out::println);
+		assertArrayEquals(requiredItems, result);
 	}
 }

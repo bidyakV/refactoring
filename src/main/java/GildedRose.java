@@ -23,6 +23,7 @@ public class GildedRose {
 		List<Item> itemList = Arrays.stream(items)
 				.map(ItemFactory::getItem)
 				.map(ItemWrapper::updateQualityRef)
+				.map(ItemWrapper::getItem)
 				.collect(Collectors.toList());
 		items = new Item[itemList.size()];
 		items = itemList.toArray(items);
