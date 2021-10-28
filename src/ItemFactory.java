@@ -1,4 +1,4 @@
-import constants.ItemConstants;
+import constants.ItemNameConstants;
 import model.AgedBrieItem;
 import model.BackstageItem;
 import model.Item;
@@ -8,7 +8,7 @@ import model.OtherItem;
 public class ItemFactory {
 
 	public static ItemWrapper getItem(Item item) {
-		switch (ItemConstants.valueOf(item.getName())) {
+		switch (ItemNameConstants.valueOf(item.getName())) {
 			case AGED_BRIE:
 				return new AgedBrieItem(item);
 			case BACKSTAGE:

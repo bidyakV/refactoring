@@ -1,5 +1,6 @@
 package model;
 
+import constants.ItemNumbersConstants;
 import services.ItemService;
 
 public class AgedBrieItem extends ItemWrapper {
@@ -10,9 +11,9 @@ public class AgedBrieItem extends ItemWrapper {
 
 	@Override
 	public ItemWrapper updateQualityRef() {
-		this.setQuality(ItemService.updateQualityAfterCheckByNumber(50, this));
+		this.setQuality(ItemService.updateQualityAfterCheckByNumber(ItemNumbersConstants.MAX_QUALITY.getQuality(), this));
 		if (this.getSellIn() < 6) {
-			this.setQuality(ItemService.updateQualityAfterCheckByNumber(50, this));
+			this.setQuality(ItemService.updateQualityAfterCheckByNumber(ItemNumbersConstants.MAX_QUALITY.getQuality(), this));
 		}
 		return this;
 	}

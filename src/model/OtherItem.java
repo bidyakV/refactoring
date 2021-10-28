@@ -1,6 +1,6 @@
 package model;
 
-import constants.ItemConstants;
+import constants.ItemNameConstants;
 import services.ItemService;
 
 public class OtherItem extends ItemWrapper {
@@ -11,7 +11,7 @@ public class OtherItem extends ItemWrapper {
 
 	@Override
 	public ItemWrapper updateQualityRef() {
-		if (!ItemConstants.SULFURAS.getName().equals(this.getName())) {
+		if (!ItemNameConstants.SULFURAS.getName().equals(this.getName())) {
 			this.setSellIn(this.getSellIn() - 1);
 			this.setQuality(ItemService.updateQualityAfterCheckByPositive(this));
 			if (this.getSellIn() > 0) {
